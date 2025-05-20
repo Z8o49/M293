@@ -5,6 +5,10 @@
   --background-light: #fffaf3;
   --background-table: #fffef8;
   --accent-color: #ffb300;
+  --dark-bg: #1a1a1a;
+  --dark-text: #e0e0e0;
+  --dark-table: #2a2a2a;
+  --dark-header: #333;
 }
 
 /* Basis-Styling */
@@ -16,6 +20,37 @@ body {
   padding: 0;
   line-height: 1.6;
   scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+body.dark-mode main {
+  background-color: var(--dark-table);
+}
+
+body.dark-mode header {
+  background: linear-gradient(135deg, #b35900, #cc8c00);
+}
+
+body.dark-mode footer {
+  background-color: var(--dark-header);
+}
+
+body.dark-mode table {
+  background-color: var(--dark-table);
+}
+
+body.dark-mode th {
+  background-color: #4a2e2a;
+}
+
+body.dark-mode tbody tr:hover {
+  background-color: #3a3a3a;
 }
 
 /* Header mit Farbverlauf */
@@ -35,8 +70,30 @@ header h1 {
 
 header p {
   font-size: 1.2rem;
-  margin: 0.5rem 0 0;
+  margin: 0.5rem 0 1rem;
   opacity: 0.9;
+}
+
+/* Dark Mode Toggle Button */
+#dark-mode-toggle {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#dark-mode-toggle:hover {
+  background-color: var(--accent-color);
+  transform: scale(1.05);
+}
+
+body.dark-mode #dark-mode-toggle {
+  background-color: var(--dark-header);
+  color: var(--dark-text);
 }
 
 /* Hauptbereich */
@@ -47,6 +104,7 @@ main {
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
 /* Überschriften */
@@ -61,6 +119,10 @@ h2 {
   border-bottom: 3px solid #c8e6c9;
   padding-bottom: 0.5rem;
   transition: color 0.3s ease;
+}
+
+body.dark-mode h2 {
+  color: #60ad64;
 }
 
 /* Navigation */
@@ -94,6 +156,14 @@ nav a:hover, nav a:focus {
   color: #fff;
   transform: scale(1.05);
   outline: none;
+}
+
+body.dark-mode nav a {
+  color: var(--accent-color);
+}
+
+body.dark-mode nav a:hover, body.dark-mode nav a:focus {
+  background-color: var(--accent-color);
 }
 
 /* Absätze und Listen */
@@ -164,13 +234,12 @@ a:hover, a:focus {
   outline: none;
 }
 
-/* Kommentare */
-.comment {
-  background-color: var(--background-table);
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+body.dark-mode a {
+  color: var(--accent-color);
+}
+
+body.dark-mode a:hover, body.dark-mode a:focus {
+  color: #cc8c00;
 }
 
 /* Input für Personenzahl */
@@ -182,3 +251,92 @@ input[type="number"] {
   margin-bottom: 1rem;
 }
 
+body.dark-mode input[type="number"] {
+  background-color: var(--dark-table);
+  color: var(--dark-text);
+  border-color: #4a4a4a;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Fade-In Animation für Abschnitte */
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3) { animation-delay: 0.4s; }
+section:nth-child(4) { animation-delay: 0.6s; }
+section:nth-child(5) { animation-delay: 0.8s; }
+
+/* Responsives Design */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  header p {
+    font-size: 1rem;
+  }
+  main {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav a {
+    display: block;
+    padding: 0.75rem;
+  }
+  table {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+  p, ul, ol {
+    font-size: 0.95rem;
+  }
+}
+
+/* Druckoptimierung */
+@media print {
+  header, footer, nav, #dark-mode-toggle {
+    display: none;
+  }
+  main {
+    box-shadow: none;
+    margin: 0;
+  }
+}
