@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechShop - Dein Elektronik-Spezialist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">TechShop</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Startseite</a></li>
+                    <li><a href="products.html">Produkte</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Willkommen bei TechShop</h1>
+            <p>Entdecke die neuesten Technologien und besten Elektronik-Deals</p>
+            <a href="products.html" class="cta-button">Jetzt Einkaufen</a>
+        </div>
+    </section>
+
+    <main>
+        <section class="section">
+            <h2>Produktkategorien</h2>
+            <div class="categories-grid">
+                <div class="category-card" onclick="filterByCategory('smartphones')">
+                    <div class="category-icon">📱</div>
+                    <h3>Smartphones</h3>
+                    <p>Die neuesten Handys und Zubehör</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('laptops')">
+                    <div class="category-icon">💻</div>
+                    <h3>Laptops</h3>
+                    <p>Leistungsstarke Notebooks für jeden Bedarf</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('audio')">
+                    <div class="category-icon">🎧</div>
+                    <h3>Audio</h3>
+                    <p>Kopfhörer, Lautsprecher und mehr</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('gaming')">
+                    <div class="category-icon">🎮</div>
+                    <h3>Gaming</h3>
+                    <p>Konsolen, Spiele und Gaming-Zubehör</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Beliebte Produkte</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">📱</div>
+                    <div class="product-info">
+                        <div class="product-title">iPhone 15 Pro</div>
+                        <div class="product-price">€1.199,00</div>
+                        <div class="product-description">Das neueste iPhone mit titanischem Design und A17 Pro Chip</div>
+                        <button class="buy-button" onclick="orderProduct('iPhone 15 Pro')">Bestellen</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">💻</div>
+                    <div class="product-info">
+                        <div class="product-title">MacBook Air M2</div>
+                        <div class="product-price">€1.399,00</div>
+                        <div class="product-description">Ultraleichtes Notebook mit M2 Chip und 13,6" Liquid Retina Display</div>
+                        <button class="buy-button" onclick="orderProduct('MacBook Air M2')">Bestellen</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🎧</div>
+                    <div class="product-info">
+                        <div class="product-title">AirPods Pro 2</div>
+                        <div class="product-price">€279,00</div>
+                        <div class="product-description">Kabellose Kopfhörer mit aktiver Geräuschunterdrückung</div>
+                        <button class="buy-button" onclick="orderProduct('AirPods Pro 2')">Bestellen</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🎮</div>
+                    <div class="product-info">
+                        <div class="product-title">PlayStation 5</div>
+                        <div class="product-price">€549,00</div>
+                        <div class="product-description">Die neueste Gaming-Konsole von Sony mit 4K-Gaming</div>
+                        <button class="buy-button" onclick="orderProduct('PlayStation 5')">Bestellen</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">⌚</div>
+                    <div class="product-info">
+                        <div class="product-title">Apple Watch Series 9</div>
+                        <div class="product-price">€429,00</div>
+                        <div class="product-description">Smartwatch mit Gesundheits-Tracking und Always-On Display</div>
+                        <button class="buy-button" onclick="orderProduct('Apple Watch Series 9')">Bestellen</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🔊</div>
+                    <div class="product-info">
+                        <div class="product-title">JBL Charge 5</div>
+                        <div class="product-price">€149,00</div>
+                        <div class="product-description">Wasserdichter Bluetooth-Lautsprecher mit 20h Akkulaufzeit</div>
+                        <button class="buy-button" onclick="orderProduct('JBL Charge 5')">Bestellen</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <h3>Newsletter abonnieren</h3>
+            <p>Bleib auf dem Laufenden über neue Produkte und exklusive Angebote!</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" class="newsletter-input" placeholder="Deine E-Mail-Adresse" required>
+                <button type="submit" class="newsletter-button">Abonnieren</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 TechShop. Alle Rechte vorbehalten.</p>
+            <p>Entwickelt mit KI-Unterstützung für M293 Projektauftrag</p>
+        </div>
+    </footer>
+
+    <script>
+        function filterByCategory(category) {
+            // Navigate to products page with category filter
+            window.location.href = `products.html?category=${category}`;
+        }
+
+        function orderProduct(productName) {
+            // Simple order simulation
+            alert(`Produkt "${productName}" wurde zum Warenkorb hinzugefügt!\n\nWeiterleitung zur Bestellseite...`);
+            // In a real app, this would add to cart or navigate to order form
+        }
+
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            alert(`Danke für deine Anmeldung, ${email}!\n\nDu erhältst bald unseren Newsletter.`);
+            event.target.reset();
+        }
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Simple animation on scroll
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.product-card, .category-card');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const cardVisible = 150;
+                
+                if (cardTop < window.innerHeight - cardVisible) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Initialize cards with animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.product-card, .category-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>
