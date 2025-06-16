@@ -5,16 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechShop - Dein Elektronik-Spezialist</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="header-container">
-            <div class="logo">TechShop</div>
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                TechShop
+            </div>
             <nav>
                 <ul>
                     <li><a href="#home">Startseite</a></li>
-                    <li><a href="products.html">Produkte</a></li>
-                    <li><a href="contact.html">Kontakt</a></li>
+                    <li><a href="#products">Produkte</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                    <li><a href="#cart" class="cart-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        Warenkorb <span class="cart-count" id="cartCount">0</span>
+                    </a></li>
                 </ul>
             </nav>
         </div>
@@ -24,7 +32,8 @@
         <div class="hero-content">
             <h1>Willkommen bei TechShop</h1>
             <p>Entdecke die neuesten Technologien und besten Elektronik-Deals</p>
-            <a href="products.html" class="cta-button">Jetzt Einkaufen</a>
+            <p class="developer-credit">Entwickelt von Mattia</p>
+            <a href="#products" class="cta-button">Jetzt Einkaufen</a>
         </div>
     </section>
 
@@ -33,129 +42,329 @@
             <h2>Produktkategorien</h2>
             <div class="categories-grid">
                 <div class="category-card" onclick="filterByCategory('smartphones')">
-                    <div class="category-icon">📱</div>
+                    <div class="category-icon"><i class="fas fa-mobile-alt"></i></div>
                     <h3>Smartphones</h3>
                     <p>Die neuesten Handys und Zubehör</p>
                 </div>
                 <div class="category-card" onclick="filterByCategory('laptops')">
-                    <div class="category-icon">💻</div>
+                    <div class="category-icon"><i class="fas fa-laptop"></i></div>
                     <h3>Laptops</h3>
                     <p>Leistungsstarke Notebooks für jeden Bedarf</p>
                 </div>
                 <div class="category-card" onclick="filterByCategory('audio')">
-                    <div class="category-icon">🎧</div>
+                    <div class="category-icon"><i class="fas fa-headphones"></i></div>
                     <h3>Audio</h3>
                     <p>Kopfhörer, Lautsprecher und mehr</p>
                 </div>
                 <div class="category-card" onclick="filterByCategory('gaming')">
-                    <div class="category-icon">🎮</div>
+                    <div class="category-icon"><i class="fas fa-gamepad"></i></div>
                     <h3>Gaming</h3>
                     <p>Konsolen, Spiele und Gaming-Zubehör</p>
                 </div>
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="products">
             <h2>Beliebte Produkte</h2>
             <div class="products-grid">
                 <div class="product-card">
-                    <div class="product-image">📱</div>
+                    <div class="product-image">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1692845702774" alt="iPhone 15 Pro" onerror="this.src='https://via.placeholder.com/300x200/4CAF50/white?text=iPhone+15+Pro'">
+                    </div>
                     <div class="product-info">
                         <div class="product-title">iPhone 15 Pro</div>
                         <div class="product-price">€1.199,00</div>
                         <div class="product-description">Das neueste iPhone mit titanischem Design und A17 Pro Chip</div>
-                        <button class="buy-button" onclick="orderProduct('iPhone 15 Pro')">Bestellen</button>
+                        <button class="buy-button" onclick="addToCart('iPhone 15 Pro', 1199, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1692845702774')">
+                            <i class="fas fa-cart-plus"></i> In den Warenkorb
+                        </button>
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-image">💻</div>
+                    <div class="product-image">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-midnight-select-20220606?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653084303665" alt="MacBook Air M2" onerror="this.src='https://via.placeholder.com/300x200/2196F3/white?text=MacBook+Air+M2'">
+                    </div>
                     <div class="product-info">
                         <div class="product-title">MacBook Air M2</div>
                         <div class="product-price">€1.399,00</div>
                         <div class="product-description">Ultraleichtes Notebook mit M2 Chip und 13,6" Liquid Retina Display</div>
-                        <button class="buy-button" onclick="orderProduct('MacBook Air M2')">Bestellen</button>
+                        <button class="buy-button" onclick="addToCart('MacBook Air M2', 1399, 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-midnight-select-20220606?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653084303665')">
+                            <i class="fas fa-cart-plus"></i> In den Warenkorb
+                        </button>
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-image">🎧</div>
+                    <div class="product-image">
+                        <img src="https://th.bing.com/th/id/OIP.l-izNBSi3m2t5LUm42IINAHaHa?w=650&h=650&rs=1&pid=ImgDetMain">
+                    </div>
                     <div class="product-info">
                         <div class="product-title">AirPods Pro 2</div>
                         <div class="product-price">€279,00</div>
                         <div class="product-description">Kabellose Kopfhörer mit aktiver Geräuschunterdrückung</div>
-                        <button class="buy-button" onclick="orderProduct('AirPods Pro 2')">Bestellen</button>
+                        <button class="buy-button" onclick="addToCart('AirPods Pro 2', 279, 'https://th.bing.com/th/id/OIP.l-izNBSi3m2t5LUm42IINAHaHa?w=650&h=650&rs=1&pid=ImgDetMain">
+                            <i class="fas fa-cart-plus"></i> In den Warenkorb
+                        </button>
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-image">🎮</div>
+                    <div class="product-image">
+                        <img src="https://gmedia.playstation.com/is/image/SIEPDC/ps5-product-thumbnail-01-en-14sep21?$facebook$" alt="PlayStation 5" onerror="this.src='https://via.placeholder.com/300x200/9C27B0/white?text=PlayStation+5'">
+                    </div>
                     <div class="product-info">
                         <div class="product-title">PlayStation 5</div>
                         <div class="product-price">€549,00</div>
                         <div class="product-description">Die neueste Gaming-Konsole von Sony mit 4K-Gaming</div>
-                        <button class="buy-button" onclick="orderProduct('PlayStation 5')">Bestellen</button>
+                        <button class="buy-button" onclick="addToCart('PlayStation 5', 549, 'https://gmedia.playstation.com/is/image/SIEPDC/ps5-product-thumbnail-01-en-14sep21?$facebook$')">
+                            <i class="fas fa-cart-plus"></i> In den Warenkorb
+                        </button>
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-image">⌚</div>
+                    <div class="product-image">
+                        <img src="https://static.lvengine.net/smartstores/Imgs/produtos/product_33581/8809613760408_01.jpg">
+                    </div>
                     <div class="product-info">
                         <div class="product-title">Apple Watch Series 9</div>
                         <div class="product-price">€429,00</div>
                         <div class="product-description">Smartwatch mit Gesundheits-Tracking und Always-On Display</div>
-                        <button class="buy-button" onclick="orderProduct('Apple Watch Series 9')">Bestellen</button>
+                        <button class="buy-button" onclick="addToCart('Apple Watch Series 9', 429, 'https://static.lvengine.net/smartstores/Imgs/produtos/product_33581/8809613760408_01.jpg'>
+                            <i class= "fas fa-cart-plus"></i> In den Warenkorb
+                        </button>
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-image">🔊</div>
+                    <div class="product-image">
+                        <img src="https://ch.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw715cb73a/JBL_CHARGE5_HERO_BLACK_0046_x1.png?sw=680&sh=680">
+                    </div>
                     <div class="product-info">
                         <div class="product-title">JBL Charge 5</div>
                         <div class="product-price">€149,00</div>
                         <div class="product-description">Wasserdichter Bluetooth-Lautsprecher mit 20h Akkulaufzeit</div>
-                        <button class="buy-button" onclick="orderProduct('JBL Charge 5')">Bestellen</button>
+                        <button class="buy-button" onclick="addToCart('JBL Charge 5', 149, 'https://ch.jbl.com/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw715cb73a/JBL_CHARGE5_HERO_BLACK_0046_x1.png?sw=680&sh=680'>
+                            <i class="fas fa-cart-plus"></i> In den Warenkorb
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Warenkorb Section -->
+        <section class="section cart-section" id="cart" style="display: none;">
+            <div class="cart-container">
+                <h2><i class="fas fa-shopping-cart"></i> Warenkorb</h2>
+                <div id="cartItems" class="cart-items">
+                    <p class="empty-cart">Ihr Warenkorb ist leer</p>
+                </div>
+                <div class="cart-summary" id="cartSummary" style="display: none;">
+                    <div class="cart-total">
+                        <strong>Gesamtsumme: €<span id="cartTotal">0.00</span></strong>
+                    </div>
+                    <div class="cart-actions">
+                        <button class="clear-cart-btn" onclick="clearCart()">
+                            <i class="fas fa-trash"></i> Warenkorb leeren
+                        </button>
+                        <button class="checkout-btn" onclick="checkout()">
+                            <i class="fas fa-credit-card"></i> Zur Kasse
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontakt Section -->
+        <section class="section" id="contact">
+            <h2>Kontakt</h2>
+            <div class="contact-form">
+                <form onsubmit="submitContact(event)">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Betreff:</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Bitte wählen...</option>
+                            <option value="general">Allgemeine Anfrage</option>
+                            <option value="support">Technischer Support</option>
+                            <option value="order">Bestellanfrage</option>
+                            <option value="complaint">Beschwerde</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Nachricht:</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-paper-plane"></i> Nachricht senden
+                    </button>
+                </form>
+            </div>
+        </section>
+
         <section class="newsletter">
-            <h3>Newsletter abonnieren</h3>
+            <h3><i class="fas fa-envelope"></i> Newsletter abonnieren</h3>
             <p>Bleib auf dem Laufenden über neue Produkte und exklusive Angebote!</p>
             <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
                 <input type="email" class="newsletter-input" placeholder="Deine E-Mail-Adresse" required>
-                <button type="submit" class="newsletter-button">Abonnieren</button>
+                <button type="submit" class="newsletter-button">
+                    <i class="fas fa-bell"></i> Abonnieren
+                </button>
             </form>
         </section>
     </main>
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 TechShop. Alle Rechte vorbehalten.</p>
-            <p>Entwickelt mit KI-Unterstützung für M293 Projektauftrag</p>
+            <p>&copy; 2025 TechShop. Alle Rechte vorbehalten.</p>
+            <p>Entwickelt mit ❤️ von Mattia für das Modul 293 der Technischen Berufsschule Zürich</p>
         </div>
     </footer>
 
     <script>
-        function filterByCategory(category) {
-            // Navigate to products page with category filter
-            window.location.href = `products.html?category=${category}`;
+        // Warenkorb Funktionalität
+        let cart = [];
+
+        function addToCart(name, price, image) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            updateCartDisplay();
+            showNotification(`${name} wurde zum Warenkorb hinzugefügt!`);
         }
 
-        function orderProduct(productName) {
-            // Simple order simulation
-            alert(`Produkt "${productName}" wurde zum Warenkorb hinzugefügt!\n\nWeiterleitung zur Bestellseite...`);
-            // In a real app, this would add to cart or navigate to order form
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCartDisplay();
+        }
+
+        function updateQuantity(name, newQuantity) {
+            const item = cart.find(item => item.name === name);
+            if (item) {
+                if (newQuantity <= 0) {
+                    removeFromCart(name);
+                } else {
+                    item.quantity = newQuantity;
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartSummary = document.getElementById('cartSummary');
+            const cartTotal = document.getElementById('cartTotal');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            cartCount.textContent = totalItems;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="empty-cart">Ihr Warenkorb ist leer</p>';
+                cartSummary.style.display = 'none';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image" onerror="this.src='https://via.placeholder.com/80x80/ccc/666?text=Bild'">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p class="cart-item-price">€${item.price.toFixed(2)}</p>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button onclick="updateQuantity('${item.name}', ${item.quantity - 1})" class="quantity-btn">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.name}', ${item.quantity + 1})" class="quantity-btn">+</button>
+                            <button onclick="removeFromCart('${item.name}')" class="remove-btn">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+                cartSummary.style.display = 'block';
+                cartTotal.textContent = totalPrice.toFixed(2);
+            }
+        }
+
+        function clearCart() {
+            if (confirm('Möchten Sie wirklich alle Artikel aus dem Warenkorb entfernen?')) {
+                cart = [];
+                updateCartDisplay();
+                showNotification('Warenkorb wurde geleert!');
+            }
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Ihr Warenkorb ist leer!');
+                return;
+            }
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            alert(`Vielen Dank für Ihre Bestellung!\n\nGesamtsumme: €${total.toFixed(2)}\n\nSie werden zur Zahlungsseite weitergeleitet...`);
+            clearCart();
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Navigation Funktionen
+        function filterByCategory(category) {
+            showNotification(`Filter für "${category}" wird angewendet...`);
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
         }
 
         function subscribeNewsletter(event) {
             event.preventDefault();
             const email = event.target.querySelector('input[type="email"]').value;
-            alert(`Danke für deine Anmeldung, ${email}!\n\nDu erhältst bald unseren Newsletter.`);
+            showNotification(`Danke für deine Anmeldung, ${email}!`);
             event.target.reset();
         }
 
-        // Add smooth scrolling for anchor links
+        function submitContact(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            showNotification(`Vielen Dank, ${name}! Ihre Nachricht wurde gesendet.`);
+            event.target.reset();
+        }
+
+        // Smooth scrolling für Navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const targetId = this.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                
+                if (targetId === 'cart') {
+                    document.querySelector('.cart-section').style.display = 'block';
+                }
+                
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth'
@@ -164,7 +373,7 @@
             });
         });
 
-        // Simple animation on scroll
+        // Scroll Animation
         window.addEventListener('scroll', () => {
             const cards = document.querySelectorAll('.product-card, .category-card');
             cards.forEach(card => {
@@ -178,7 +387,7 @@
             });
         });
 
-        // Initialize cards with animation
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             const cards = document.querySelectorAll('.product-card, .category-card');
             cards.forEach((card, index) => {
@@ -187,6 +396,8 @@
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 card.style.transitionDelay = `${index * 0.1}s`;
             });
+            
+            updateCartDisplay();
         });
     </script>
 </body>
